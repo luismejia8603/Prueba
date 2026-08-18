@@ -1,52 +1,69 @@
 ﻿using System;
 
-
 namespace Prueba
 {
     internal class Program
     {
-        static string EvaluarEdad(int edad)
-        {
-            if (edad < 1 || edad > 120)
-            {
-                return "Edad Invalida";
-            }
-
-            else if (edad >= 18)
-            {
-                return "Mayor de edad";
-            }
-
-            else 
-            {
-                return "Menor de edad";
-            }
-
-        }
-
-
-        static void MostrarResultado(string nombre, string estado) 
-        {
-            Console.WriteLine($"{nombre}: {estado}");
-        }
-
-        
         static void Main(string[] args)
         {
+            int[] numeros = new int[5];
 
-            Console.Write("Ingresar nombre: ");
-            string nombre = Console.ReadLine();
+            int suma = 0;
+           
 
-            Console.Write("Ingresar edad: ");
-            int edad = int.Parse(Console.ReadLine());
 
-            string estado = EvaluarEdad(edad);
+            for (int i = 0; i < numeros.Length; i++)
+            {
+                Console.Write($"Ingrese número {i + 1}: ");
+                numeros[i] = int.Parse(Console.ReadLine());
 
-            MostrarResultado(nombre, estado);
+                suma += numeros[i];
 
-            Console.WriteLine("Gracias por participar");
-            Console.WriteLine("Mensaje de prueba");
 
+            }
+
+
+
+            Console.WriteLine("Numeros Almacenados");
+
+            for (int i = 0; i < numeros.Length; i++)
+            {
+
+
+                Console.WriteLine(numeros[i]);
+
+            }
+
+            int mayor = numeros[0];
+
+            for (int i = 1; i < numeros.Length; i++)
+            {
+                if (numeros[i] > mayor)
+                {
+                    mayor = numeros[i];
+                }
+            }
+
+            int menor = numeros[0];
+
+            for (int i = 1; i < numeros.Length; i++)
+            {
+                if (numeros[i] < menor)
+                {
+                    menor = numeros[i];
+                }
+            }
+
+            Console.WriteLine($"Numero mayor: {mayor}");
+            Console.WriteLine($"Numero menor: {menor}");
+
+
+
+            Console.WriteLine($"Suma total: {suma}");
+
+            double promedio = (double)suma / numeros.Length;
+
+            Console.WriteLine($"Promedio: {promedio}");
 
             Console.ReadKey();
         }
