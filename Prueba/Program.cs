@@ -27,7 +27,7 @@ namespace Prueba
 
         static void MostrarResultado(string nombre, string estado) 
         {
-            Console.Write($"{nombre}: {estado}");
+            Console.WriteLine($"{nombre}: {estado}");
         }
 
         
@@ -43,6 +43,8 @@ namespace Prueba
             string estado = EvaluarEdad(edad);
 
             MostrarResultado(nombre, estado);
+
+            Console.WriteLine("Gracias por participar");
             
 
             Console.ReadKey();
