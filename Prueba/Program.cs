@@ -45,7 +45,8 @@ namespace Prueba
             MostrarResultado(nombre, estado);
 
             Console.WriteLine("Gracias por participar");
-            
+            Console.WriteLine("Mensaje de prueba");
+
 
             Console.ReadKey();
         }
