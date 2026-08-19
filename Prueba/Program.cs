@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 
 namespace Prueba
 {
@@ -8,7 +9,8 @@ namespace Prueba
         {
             int[] numeros = new int[5];
 
-            int suma = 0;
+            int contador = 0;
+
            
 
 
@@ -17,55 +19,70 @@ namespace Prueba
                 Console.Write($"Ingrese número {i + 1}: ");
                 numeros[i] = int.Parse(Console.ReadLine());
 
-                suma += numeros[i];
 
 
             }
 
+            Console.WriteLine("Ingresar número que desea reemplazar");
+            int numeroReemplazar = int.Parse(Console.ReadLine());
 
+            Console.WriteLine("Ingresar por cual número desea cambiar");
+            int numeroNuevo = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Numeros Almacenados");
 
             for (int i = 0; i < numeros.Length; i++)
             {
-
-
-                Console.WriteLine(numeros[i]);
-
-            }
-
-            int mayor = numeros[0];
-
-            for (int i = 1; i < numeros.Length; i++)
-            {
-                if (numeros[i] > mayor)
+                if (numeros[i] == numeroReemplazar)
                 {
-                    mayor = numeros[i];
+                    numeros[i] = numeroNuevo;
+                    contador++;
                 }
             }
 
-            int menor = numeros[0];
+            if (contador == 1)
 
-            for (int i = 1; i < numeros.Length; i++)
             {
-                if (numeros[i] < menor)
+
+                Console.WriteLine($"El numero {numeroReemplazar} se reemplazó {contador} vez");
+
+
+
+            }
+
+            else if (contador > 1)
+            {
+
+                Console.WriteLine($"El numero {numeroReemplazar} se reemplazó {contador} veces");
+            }
+
+            else 
+            { 
+            
+                Console.WriteLine($"El número {numeroReemplazar} no se reemplazó porque no está en el arreglo");
+            
+            
+            }
+
+
+            if (contador > 0)
+            {
+                Console.WriteLine("Arreglo actualizado:");
+
+                for (int i = 0; i < numeros.Length; i++)
                 {
-                    menor = numeros[i];
+                    Console.WriteLine(numeros[i]);
                 }
             }
 
-            Console.WriteLine($"Numero mayor: {mayor}");
-            Console.WriteLine($"Numero menor: {menor}");
+            
 
 
 
-            Console.WriteLine($"Suma total: {suma}");
 
-            double promedio = (double)suma / numeros.Length;
 
-            Console.WriteLine($"Promedio: {promedio}");
 
             Console.ReadKey();
+
         }
     }
 }
