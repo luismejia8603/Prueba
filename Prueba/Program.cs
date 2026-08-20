@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Timers;
 
 namespace Prueba
 {
@@ -7,9 +6,11 @@ namespace Prueba
     {
         static void Main(string[] args)
         {
-            int[] numeros = new int[5];
+            int[] numeros = new int[6];
 
-            int contador = 0;
+            
+
+            
 
            
 
@@ -23,59 +24,100 @@ namespace Prueba
 
             }
 
-            Console.WriteLine("Ingresar número que desea reemplazar");
-            int numeroReemplazar = int.Parse(Console.ReadLine());
+            int suma = 0;
+            int mayor = numeros[0];
+            int menor = numeros[0];
 
-            Console.WriteLine("Ingresar por cual número desea cambiar");
-            int numeroNuevo = int.Parse(Console.ReadLine());
+            for (int i = 1; i < numeros.Length; i++)
+            {
+                if (numeros[i] > mayor)
 
+                    mayor = numeros[i];
+                if (numeros[i] < menor)
+                {
+                    menor = numeros[i];
+                }
+
+            }
+
+            int pares = 0;
+            int impares = 0;
 
             for (int i = 0; i < numeros.Length; i++)
             {
-                if (numeros[i] == numeroReemplazar)
+                Console.WriteLine(numeros[i]);
+                suma= suma+numeros[i];
+
+                if (numeros[i] %2 == 0)
                 {
-                    numeros[i] = numeroNuevo;
+
+                    pares++;
+
+                }
+
+                else 
+                {
+
+                    impares++;
+                
+                }
+
+
+
+            }
+
+            Console.WriteLine($"La suma de los numeros es: {suma}");
+
+            double promedio = (double)suma / numeros.Length;
+
+            Console.WriteLine($"El promedio es: {promedio}");
+
+            Console.WriteLine($"El numero mayor es: {mayor}");
+            Console.WriteLine($"El numero menor es: {menor}");
+            Console.WriteLine($"Pares son: {pares}");
+            Console.WriteLine($"Impares son: {impares}");
+
+
+
+            Console.Write("Numero a buscar: ");
+            int numeroBuscar = int.Parse( Console.ReadLine() );
+            int contador = 0;
+
+            for (int i = 0; i < numeros.Length; i++) 
+            
+            {
+
+                if (numeroBuscar == numeros[i])
+                {
+                    Console.WriteLine($"El numero {numeroBuscar} aparece en la posición {i + 1}");
                     contador++;
                 }
+            
             }
 
             if (contador == 1)
-
             {
 
-                Console.WriteLine($"El numero {numeroReemplazar} se reemplazó {contador} vez");
-
-
+                Console.WriteLine($"El numero {numeroBuscar} aparece {contador} vez");
 
             }
 
             else if (contador > 1)
             {
 
-                Console.WriteLine($"El numero {numeroReemplazar} se reemplazó {contador} veces");
+                Console.WriteLine($"El numero {numeroBuscar} aparece {contador} veces");
+
             }
 
             else 
-            { 
-            
-                Console.WriteLine($"El número {numeroReemplazar} no se reemplazó porque no está en el arreglo");
-            
-            
-            }
-
-
-            if (contador > 0)
             {
-                Console.WriteLine("Arreglo actualizado:");
 
-                for (int i = 0; i < numeros.Length; i++)
-                {
-                    Console.WriteLine(numeros[i]);
-                }
+                Console.WriteLine($"El numero {numeroBuscar} no está en el arreglo");
+
             }
 
-            
 
+            
 
 
 
