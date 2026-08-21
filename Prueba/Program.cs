@@ -6,125 +6,160 @@ namespace Prueba
     {
         static void Main(string[] args)
         {
-            int[] numeros = new int[6];
-
-            
-
-            
-
-           
+            int[,] numeros = new int[3, 3];
 
 
-            for (int i = 0; i < numeros.Length; i++)
+
+            for (int fila = 0; fila < 3; fila++)
             {
-                Console.Write($"Ingrese número {i + 1}: ");
-                numeros[i] = int.Parse(Console.ReadLine());
-
-
-
+                for (int columna = 0; columna < 3; columna++)
+                {
+                    Console.Write($"Ingrese número para fila {fila + 1}, columna {columna + 1}: ");
+                    numeros[fila, columna] = int.Parse(Console.ReadLine());
+                }
             }
 
-            int suma = 0;
-            int mayor = numeros[0];
-            int menor = numeros[0];
+            Console.WriteLine("\nMatriz almacenada:");
 
-            for (int i = 1; i < numeros.Length; i++)
+
+
+            for (int fila = 0; fila < 3; fila++)
             {
-                if (numeros[i] > mayor)
 
-                    mayor = numeros[i];
-                if (numeros[i] < menor)
+                for (int columna = 0; columna < 3; columna++)
                 {
-                    menor = numeros[i];
+
+                    Console.Write(numeros[fila, columna] + " ");
+
                 }
 
+                Console.WriteLine();
+
             }
+
+            Console.WriteLine();
+
+            int suma = 0;
+
+            for (int fila = 0; fila < 3; fila++)
+            {
+
+                int sumaFila = 0;
+
+                for (int columna = 0; columna < 3; columna++)
+                {
+
+
+                    sumaFila += numeros[fila, columna];
+                    suma += numeros[fila, columna];
+                }
+
+
+                Console.WriteLine($"Suma de la fila {fila + 1}: {sumaFila}");
+
+            }
+
+            for (int columna = 0; columna < 3; columna++)
+            {
+
+                int sumacolumna = 0;
+
+                for (int fila = 0; fila < 3; fila++)
+                {
+
+
+                    sumacolumna += numeros[fila, columna];
+
+                }
+
+
+                Console.WriteLine($"Suma de la columna {columna + 1}: {sumacolumna}");
+
+            }
+
+            int numeroMayor = numeros[0, 0];
+            int numeroMenor = numeros[0, 0];
 
             int pares = 0;
             int impares = 0;
 
-            for (int i = 0; i < numeros.Length; i++)
+            for (int fila = 0; fila < 3; fila++)
             {
-                Console.WriteLine(numeros[i]);
-                suma= suma+numeros[i];
-
-                if (numeros[i] %2 == 0)
+                for (int columna = 0; columna < 3; columna++)
                 {
 
-                    pares++;
+                    if (numeros[fila, columna] > numeroMayor)
+                    {
+                        numeroMayor = numeros[fila, columna];
 
-                }
+                    }
 
-                else 
-                {
+                    if (numeros[fila, columna] < numeroMenor)
+                    {
+                        numeroMenor = numeros[fila, columna];
+                    }
 
-                    impares++;
-                
+                    if ((numeros[fila,columna]) % 2 == 0)
+                    {
+                        pares++;
+
+                    }
+
+                    else 
+                    {
+                    
+                       impares++;
+                    
+                    }
+
                 }
 
 
 
             }
 
-            Console.WriteLine($"La suma de los numeros es: {suma}");
+            Console.WriteLine($"\nSuma total: {suma}");
 
-            double promedio = (double)suma / numeros.Length;
+            Console.WriteLine($"Mayor: {numeroMayor}");
+            Console.WriteLine($"Menor: {numeroMenor}");
 
-            Console.WriteLine($"El promedio es: {promedio}");
-
-            Console.WriteLine($"El numero mayor es: {mayor}");
-            Console.WriteLine($"El numero menor es: {menor}");
-            Console.WriteLine($"Pares son: {pares}");
-            Console.WriteLine($"Impares son: {impares}");
+            Console.WriteLine($"Pares: {pares}");
+            Console.WriteLine($"Impares: {impares}");
 
 
-
-            Console.Write("Numero a buscar: ");
+            Console.WriteLine("Ingresar número que desea buscar: ");
             int numeroBuscar = int.Parse( Console.ReadLine() );
+
+
+
             int contador = 0;
 
-            for (int i = 0; i < numeros.Length; i++) 
-            
+            for (int fila = 0; fila < 3; fila++)
             {
-
-                if (numeroBuscar == numeros[i])
+                for (int columna = 0; columna < 3; columna++)
                 {
-                    Console.WriteLine($"El numero {numeroBuscar} aparece en la posición {i + 1}");
-                    contador++;
+                    if (numeros[fila, columna] == numeroBuscar)
+                    {
+                        Console.WriteLine($"Encontrado en fila {fila + 1}, columna {columna + 1}");
+                        contador++;
+                    }
                 }
-            
             }
 
-            if (contador == 1)
+            if (contador == 0)
             {
-
-                Console.WriteLine($"El numero {numeroBuscar} aparece {contador} vez");
-
+                Console.WriteLine($"El número {numeroBuscar} no fue encontrado.");
             }
-
-            else if (contador > 1)
+            else if (contador == 1)
             {
-
-                Console.WriteLine($"El numero {numeroBuscar} aparece {contador} veces");
-
+                Console.WriteLine($"El número {numeroBuscar} fue encontrado {contador} vez.");
             }
-
-            else 
+            else
             {
-
-                Console.WriteLine($"El numero {numeroBuscar} no está en el arreglo");
-
+                Console.WriteLine($"El número {numeroBuscar} fue encontrado {contador} veces.");
             }
-
-
-            
-
-
-
-
 
             Console.ReadKey();
-
         }
     }
 }
