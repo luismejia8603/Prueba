@@ -6,21 +6,32 @@ namespace Prueba
     {
         static void Main(string[] args)
         {
+
             Console.Write("Ingresar una palabra: ");
-            string palabra = Console.ReadLine().ToLower();
+            string palabra = Console.ReadLine().Trim();
 
-            palabra = palabra.Trim();
-            Console.WriteLine(palabra);
-            Console.WriteLine(palabra.Replace("a","@"));
+            Console.WriteLine(palabra.ToUpper());
 
+            string invertida = "";
 
-            if (palabra.Length >= 3)
+            Console.WriteLine($"Original: {palabra}");
+            
+            for (int i = palabra.Length-1; i >= 0; i--)
             {
-                Console.WriteLine(palabra.Substring(0, 3));
+                invertida += palabra[i];
+
+                
+            }
+
+            Console.WriteLine($"Invertida: {invertida}");
+
+            if (palabra == invertida)
+            {
+                Console.WriteLine("La palabra es palíndromo.");
             }
             else
             {
-                Console.WriteLine("La palabra tiene menos de 3 caracteres.");
+                Console.WriteLine("La palabra no es palíndromo.");
             }
 
 
